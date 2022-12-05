@@ -375,8 +375,7 @@ public class CommandRegistry {
 
     private boolean runCommand(Player player, CommandInfo command, String[] parameters) {
         if (command.parameters.length != parameters.length) {
-            Colour RESPONSE_COLOUR = new Colour(200, 255, 200);
-            server.sendClientMessage(player, RESPONSE_COLOUR, ("Hay un error en la ejecucion del comando"));
+
             return false;
         }
 
@@ -434,6 +433,8 @@ public class CommandRegistry {
             }
 
         } catch (AbortCommandException e) {
+            Colour RESPONSE_COLOUR = new Colour(200, 255, 200);
+            server.sendClientMessage(player, RESPONSE_COLOUR, ("Hay un error en la ejecucion del comando"));
             return true;
         } catch (Exception e) {
             if (player != null) {
@@ -444,6 +445,8 @@ public class CommandRegistry {
             }
             throw new RuntimeException(e);
         }
+        Colour RESPONSE_COLOUR = new Colour(200, 255, 200);
+        server.sendClientMessage(player, RESPONSE_COLOUR, ("Hay un error en la ejecucion del comando"));
 
         return true;
     }
