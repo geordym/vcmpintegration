@@ -468,9 +468,13 @@ public class CommandRegistry {
             if (this.caseInsensitive) {
                 command = getCaseInsensitiveCommand(parts[0]);
                 if (command == null) {
+                    Colour RESPONSE_COLOUR = new Colour(200, 255, 200);
+                    server.sendClientMessage(player, RESPONSE_COLOUR, ("Hay un error en la ejecucion del comando"));
                     return false;
                 }
             } else {
+                Colour RESPONSE_COLOUR = new Colour(200, 255, 200);
+                server.sendClientMessage(player, RESPONSE_COLOUR, ("Hay un error en la ejecucion del comando"));
                 return false;
             }
 
@@ -478,10 +482,14 @@ public class CommandRegistry {
 
         if (command.controller != null) {
             if (!command.controller.checkAccess(player)) {
+                Colour RESPONSE_COLOUR = new Colour(200, 255, 200);
+                server.sendClientMessage(player, RESPONSE_COLOUR, ("Hay un error en la ejecucion del comando"));
                 return false;
             }
         } else {
             if (!command.baseCommand.checkAccess()) {
+                Colour RESPONSE_COLOUR = new Colour(200, 255, 200);
+                server.sendClientMessage(player, RESPONSE_COLOUR, ("Hay un error en la ejecucion del comando"));
                 return false;
             }
         }
